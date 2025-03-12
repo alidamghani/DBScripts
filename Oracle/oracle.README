@@ -1,0 +1,135 @@
+oracle.README 
+ 
+# Copyright 2016 Amazon.com, Inc. or its affiliates. 
+# All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"). 
+# You may not use this file except in compliance with the License. 
+# A copy of the License is located at
+# 
+#    http://aws.amazon.com/apache2.0/
+# 
+# or in the "license" file accompanying this file. 
+# This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+# either express or implied. See the License for the specific language governing permissions 
+# and limitations under the License.
+
+
+
+ 
+##############################################################################
+ORACLE SCRIPTS 
+##############################################################################
+
+
+script-name                          :  Description 
+					Tested on Oracle-SE2 <version>, opt: Oracle-EE <version>  	
+
+#####################################
+rds-support-tools/oracle/diag/sql
+#####################################
+blocking-sessions.sql               : 	Counts number of current waiters in v$session who have blockers
+					Tested Oracle-SE2 12.1, Oracle-EE 12.1
+
+constraints-whr-table.sql 	    :   4 queries: Primary + Unique Keys, Foreign keys, Indexes Foreign Keys
+					and Check Constraints 
+					Tested Oracle-SE2 12.1, Oracle-EE 12.1 
+
+expensive-sql.sql 		    :   Outputs 50 most expensive sql statements in order of largest buffer_gets/execution 
+					User can comment out this "order by" clause and uncomment another for a different view 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1
+
+explain-sql-whr-sql_id.sql	    :   Outputs sql plan for a prompted sql_id 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+gen-kill-command-whr-sid.sql 	    :   Outputs kill command for a prompted session id (sid) 
+					Does not run command.	
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+hello-world.sql 		    :   Selects "Hello World!"  from dual. Can be used for testing. 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+indexes-whr-table.sql 		    :   Outputs index information including indexed columns 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+
+longops-whr-sid.sql 		    :   Queries timing info from v$session_longops for prompted session id (sid)
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+oracle-12-patch-list.sql            :   Outputs list of Oracle patch installed - 12c versions EE, SE and SE2  only
+                                        Tested on Oracle-SE 12.1, Oracle-SE2 12.1, Oracle-EE 12.1
+
+oracle-12-patch-list-verbose.sql    :   Outputs list and details of Oracle patch installed - 12c versions EE, SE and SE2 only
+                                        Tested on Oracle-SE 12.1, Oracle-SE2 12.1, Oracle-EE 12.1
+
+perm-tablespace-space.sql 	    :   Outputs total space, free space and percent free of permanent tablespaces 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+recommend-redolog-size-count.sql    :   Checks whether redologs are of adequate size and number for a heavy workload
+                                        that has been running for at least 20 minutes.  Makes recommendations.
+                                        Tested on Oracle-SE2 12.1, Oracle-EE 12.1
+
+session-sql-waits.sql	    	    :   Counts number of sessions currently running sql with same wait event 
+					Tested Oracle-SE2 12.1, Oracle-EE 12.1 
+
+sessions-using-temp-space.sql.sql   :   Outputs information about sessions currently using temp space
+                                        Tested on Oracle-SE2 12.1, Oracle-EE 12.1
+
+sessions-whr-username.sql 	    :   Outputs session detail for sessions logged in as a prompted username
+					Tested Oracle-SE2 12.1, Oracle-EE 12.1 
+					
+sessions-whr-sql_id.sql 	    :   Outputs session detail for sessions running prompted sql_id
+                                        Tested on Oracle-SE2 12.1, Oracle-EE 12.1
+
+sessions-whr-wait_event.sql 	    :   Outputs session detail for sessions that have waited longest on prompted wait event 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+session-wait-summary.sql            : 	Counts the number of sessions waiting on each Oracle wait event
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1
+
+session-whr-sid.sql		    :   Outputs session detail for a prompted session id (sid) 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+sql-text-whr-sql_id.sql	    	    :   Outputs sql text for a prompted sql_id
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1
+
+temp-tablespace-space.sql 	    :   Outputs total temp space, free temp space and percent free 
+					Tested on Oracle-SE2 12.1, Oracle-EE 12.1 
+
+
+#####################################
+rds-support-tools/oracle/diag/shell
+#####################################
+get-alert-log.cli 		   :   	Bash script uses aws cli to extract Oracle alert log for a given db instance id and region 
+					Tip: Run list-oracle-inst-ids.cli to generate instance id list. 
+					Tested on aws-cli/1.10.30 
+
+list-oracle-inst-ids.cli           :    Bash script calls awscli to list oracle (se and ee) db-instance-ids in a region
+                                        Tested on aws-cli/1.10.30
+
+oracle-sql-driver.cli		   :    Run as oracle-sql-driver.cli <db-inst-identifier.listfile > <oracle dba user> <sql script> <opt: region>
+					Prompts for <oracle dba user> password, then iterates over db-inst-identifier.listfile. 
+					Calls awscli to construct tns connect string, then connects and runs  <sql script> in each database. 
+					Same oracle dba user and password must exist in each database.
+					Tip: Run list-oracle-inst-ids.cli to generate instance id list. 
+					Tested on Ec2 Amazon linux, Bash shell, aws-cli/1.10.30 
+
+oracle-sql-driver.sh 		   : 	Run as oracle-sql-driver.sh <tns connections list file> <oracle dba user> <sql script> 
+					Prompts for <oracle dba user> password, then iterates over tns connection list, 
+					running <sql script> in each database. Same oracle dba user and password must 
+					exist in each database.  See sample connect list file: tns-connect-list.sample 
+					Tested on Ec2 Amazon linux, Bash shell 
+
+sqlplus.cli 			   :    Run as sqlplus.cli <db-instance-identifier>  <oracle username> <opt: region> 
+					Calls awscli to extract hostname, port and database name and constructs tns connect string
+					Tip: Run list-oracle-inst-ids.cli to generate instance id list.
+					Connects to database in sqlplus 
+					Tested on aws-cli/1.10.30					
+
+tns-connect-list.sample            :    Sample tns connections list file. Can contain both tns aliases and raw connect strings
+                                        A similar file can be used with oracle-sql-driver.sh
+
+#####################################
+rds-support-tools/oracle/diag/proc
+#####################################
+
