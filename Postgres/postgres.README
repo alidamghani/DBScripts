@@ -1,0 +1,64 @@
+postgres.README 
+ 
+# Copyright 2016 Amazon.com, Inc. or its affiliates. 
+# All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"). 
+# You may not use this file except in compliance with the License. 
+# A copy of the License is located at
+# 
+#    http://aws.amazon.com/apache2.0/
+# 
+# or in the "license" file accompanying this file. 
+# This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+# either express or implied. See the License for the specific language governing permissions 
+# and limitations under the License.
+ 
+##############################################################################
+POSTGRES SCRIPTS 
+##############################################################################
+
+
+script-name                          :  Description 
+					Tested on PostgreSQL <version>
+
+#####################################
+rds-support-tools/postgres/diag/sql
+#####################################
+
+grants-whr-table.sql                :  SQL to list all granted permission on a specified relation.
+                                       Run as psql -v tbl_name=<your table name here> -f grants-whr-table.sql
+                                       tested on PostgreSQL 9.x			
+
+list-databases-size.sql             :  List top 20 databases the user can connect to sorted by size.
+                                       I started with the query run by the \l+ psql command and sorted by size 
+                                       and added a limit of 20
+
+#####################################
+rds-support-tools/postgres/diag/shell
+#####################################
+
+list-postgres-inst-ids.cli 	    :   Bash script calls awscli to list postgres db-instance-ids in a region
+                                        Tested on aws-cli/1.10.30
+
+pgpass				    :   Sample pgpass file to keep password off commandline 
+					Ref: https://www.postgresql.org/docs/current/static/libpq-pgpass.html
+					Tested on psql 9.2
+
+psql.cli			    :   Bash script accepts db-instance-identifier, postgres username and optional region as commandline parameters
+                                        Calls awscli to extract hostname, port and database name and connects to database in psql
+					Assumes password is in $HOME/.pgpass See example file  
+					Tip: Run list-postgres-inst-ids.cli to generate db-instance-identifier list. 
+                                        Tested on aws-cli/1.10.30
+
+postgresql-diagnostics.sh           :   Bash script that can be added to a crontab of a bastion host to collect diagnostic information from the RDS PostgreSQL instance or executed add-hoc
+                                        Uses .pgpass password file as official PostgreSQL method recommends
+                                        Calls are made to the instance directly to execute SQL commands and output is redirected to output file
+                                        Requires endpoint, role and database to be passed as execution parameters
+
+
+
+#####################################
+rds-support-tools/postgres/diag/proc
+#####################################
+
