@@ -1,0 +1,44 @@
+Database:
+
+sys.dm_db_file_space_usage - Returns space usage information for each data file in the database.
+sys.dm_db_log_space_usage - Returns space usage information for the transaction log.
+sys.dm_db_session_space_usage - Returns the number of pages allocated and deallocated by each session for the database.
+sys.dm_db_objects_impacted_on_version_change (Azure)- Provides an early warning system to determine objects that will be impacted by a major release upgrade in Azure SQL Database.
+
+
+Execution:
+
+sys.dm_exec_sessions - Returns one row per authenticated session on SQL Server.
+sys.dm_exec_connections - Returns information about the connections established to this instance of the database engine and the details of each connection.
+sys.dm_exec_cursors - Returns information about open or declared cursors in Azure SQL Database
+sys.dm_exec_requests - Returns information about each request that is executing in SQL Server.
+sys.dm_exec_cached_plans - Returns a row for each query plan that is cached by SQL Server for faster query execution. 
+sys.dm_exec_sql_text - Returns the text of the SQL batch that is identified by the specified sql_handle.
+
+
+Execution stats:
+
+sys.dm_exec_session_wait_stats - Returns information about all the waits encountered by threads that executed for each session.
+sys.dm_exec_query_stats - Returns aggregate performance statistics for cached query plans in SQL Server.
+sys.dm_exec_query_plan_stats - Returns the equivalent of the last known actual execution plan for a previously cached query plan.
+sys.dm_exec_procedure_stats - Returns aggregate performance statistics for cached stored procedures.
+
+
+Latch:
+
+sys.dm_os_wait_stats - Provides information on PAGELATCH, PAGEIOLATCH, and LATCH wait types (LATCH_EX, LATCH_SH is used to group all non-buffer latch waits).
+sys.dm_os_latch_stats – Provides detailed information about non-buffer latch waits.
+sys.dm_db_index_operational_stats - This DMV provides aggregated waits for each index, which is useful for troubleshooting latch-related performance issues.
+
+
+Transaction:
+
+sys.dm_tran_session_transactions - Returns correlation information for associated transactions and sessions.
+sys.dm_tran_locks - Returns information about currently active lock manager resources in SQL Server. Each row represents a currently active request to the lock manager for a lock that has been granted or is waiting to be granted.
+
+
+Index:
+
+sys.dm_db_index_physical_stats - Returns size and fragmentation information for the data and indexes of the specified table or view.
+sys.dm_db_index_usage_stats - Returns counts of different types of index operations and the time each type of operation was last performed.
+sys.dm_db_index_operational_stats - Returns current lower-level I/O, locking, latching, and access method activity for each partition of a table or index in the database.
