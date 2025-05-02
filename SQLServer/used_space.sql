@@ -1,10 +1,10 @@
 -- Determining the Amount of Space Used  / free
 SELECT 
 	 [Source] = 'database_files'
-	,[TEMPDB_max_size_MB] = SUM(max_size) * 8 / 1027.0
-	,[TEMPDB_current_size_MB] = SUM(size) * 8 / 1027.0
+	,[DB_max_size_MB] = SUM(max_size) * 8 / 1027.0
+	,[DB_current_size_MB] = SUM(size) * 8 / 1027.0
 	,[FileCount] = COUNT(FILE_ID)
-FROM tempdb.sys.database_files
+FROM sys.database_files
 WHERE type = 0 --ROWS
 
 SELECT 
