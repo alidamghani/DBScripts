@@ -20,3 +20,12 @@ FROM (
     ) AS query_stats
 GROUP BY query_stats.query_hash
 ORDER BY 2 DESC;
+
+
+-- find the plan for query text
+SELECT * -- UseCounts, Cacheobjtype, Objtype, TEXT, query_plan
+FROM sys.dm_exec_cached_plans 
+CROSS APPLY sys.dm_exec_sql_text(plan_handle)
+CROSS APPLY sys.dm_exec_query_plan(plan_handle)
+where text like '% id_object, versioned%'
+
