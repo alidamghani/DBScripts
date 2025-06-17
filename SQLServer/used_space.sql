@@ -58,3 +58,41 @@ LEFT JOIN sys.databases D
 WHERE internal_objects_alloc_page_count + user_objects_alloc_page_count > 0
 GROUP BY SU.session_id
 ORDER BY [user_objects_alloc_page_count_MB] desc, session_id;
+
+-- Obtaining the size of tables and their indexes
+
+with cte as (  
+  SELECT  
+  t.name as TableName,  
+  SUM (s.used_page_count) as used_pages_count,  
+  SUM (CASE  
+              WHEN (i.index_id < 2) THEN (in_row_data_page_count + lob_used_page_count + row_overflow_used_page_count)  
+              ELSE lob_used_page_count + row_overflow_used_page_count  
+          END) as pages  
+  FROM sys.dm_db_partition_stats  AS s   
+  JOIN sys.tables AS t ON s.object_id = t.object_id  
+  JOIN sys.indexes AS i ON i.[object_id] = t.[object_id] AND s.index_id = i.index_id  
+  GROUP BY t.name  
+  )  
+  ,cte2 as(select  
+      cte.TableName,   
+      (cte.pages * 8.) as TableSizeInKB,   
+      ((CASE WHEN cte.used_pages_count > cte.pages   
+                  THEN cte.used_pages_count - cte.pages  
+                  ELSE 0   
+            END) * 8.) as IndexSizeInKB  
+  from cte  
+ )  
+ select TableName,TableSizeInKB,IndexSizeInKB,  
+ case when (TableSizeInKB+IndexSizeInKB)>1024*1024   
+ then cast((TableSizeInKB+IndexSizeInKB)/1024*1024 as varchar)+'GB'  
+ when (TableSizeInKB+IndexSizeInKB)>1024   
+ then cast((TableSizeInKB+IndexSizeInKB)/1024 as varchar)+'MB'  
+ else cast((TableSizeInKB+IndexSizeInKB) as varchar)+'KB' end [TableSizeIn+IndexSizeIn]  
+ from cte2  
+ order by 2 desc
+ 
+-- 
+select db_name(database_id), df.file_id,  name, type_desc, total_page_count, allocated_extent_page_count, differential_base_time, modified_extent_page_count
+from sys.dm_db_file_space_usage dfsu inner join sys.database_files df
+on dfsu.file_id = df.file_id;
