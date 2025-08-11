@@ -36,6 +36,8 @@ SELECT blocked_locks.pid     AS blocked_pid,
     JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
    WHERE NOT blocked_locks.GRANTED;
 
+\qecho '\n================TRANSACTION AGE====================\n'
+SELECT age(transaction),* FROM pg_prepared_xacts ;
 
 \qecho '\n================DATABASES INFO====================\n'
 SELECT * FROM pg_stat_database;
