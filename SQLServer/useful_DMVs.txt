@@ -22,7 +22,7 @@ sys.dm_exec_session_wait_stats - Returns information about all the waits encount
 sys.dm_exec_query_stats - Returns aggregate performance statistics for cached query plans in SQL Server.
 sys.dm_exec_query_plan_stats - Returns the equivalent of the last known actual execution plan for a previously cached query plan.
 sys.dm_exec_procedure_stats - Returns aggregate performance statistics for cached stored procedures.
-
+sys.dm_exec_query_memory_grants - Memory allocation details per session.
 
 Latch:
 
