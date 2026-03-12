@@ -1,25 +1,25 @@
-# MySQL Diagnostic Scripts & AWS RDS Integration
+# MySQL Diagnostic Scripts & AWS RDS Tools
 
 [<img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" align="right" width="120">](https://www.mysql.com/)
 
 ## Overview
 
-A comprehensive MySQL diagnostic toolkit with **11 specialized SQL scripts** and **AWS RDS integration utilities** for performance monitoring, troubleshooting, and capacity planning.
+A collection of **11 handy SQL scripts** and **AWS RDS tools** to help you troubleshoot and optimize MySQL databases.
 
-This collection provides MySQL DBAs and engineers with production-ready tools for:
-- Blocking session detection and analysis
-- Index optimization and redundancy identification
-- Schema validation and primary key auditing
-- Space allocation monitoring and capacity planning
-- AWS RDS integration for automated instance discovery and connection
-- Kill command generation for RDS-specific procedures
+These scripts are useful for:
+- Finding sessions that are blocking each other
+- Spotting redundant indexes wasting space
+- Checking which tables are missing primary keys
+- Monitoring disk space usage
+- Working with AWS RDS MySQL instances (with special RDS kill commands)
+- Quickly connecting to RDS databases
 
-**Contents:**
-- 🔍 **11 SQL Diagnostic Scripts** - Purpose-built queries for common MySQL troubleshooting scenarios
-- 🛠️ **Shell Scripts & CLI Utilities** - AWS RDS integration and automation tools
-- ☁️ **AWS RDS Optimized** - Native support for RDS procedures (rds_kill, rds_kill_query)
-- 📊 **InnoDB Focus** - Specialized scripts for InnoDB engine monitoring
-- 🔑 **Schema Validation** - Primary key detection and missing PK identification
+**What's included:**
+- 🔍 **11 SQL Scripts** - Common troubleshooting queries for MySQL
+- 🛠️ **Shell Scripts** - AWS RDS integration and connection tools
+- ☁️ **AWS RDS Support** - Scripts that work with RDS procedures (rds_kill, rds_kill_query)
+- 📊 **InnoDB Focus** - Scripts specifically for InnoDB engine
+- 🔑 **Schema Checks** - Find missing primary keys
 
 ---
 
@@ -48,16 +48,16 @@ This collection provides MySQL DBAs and engineers with production-ready tools fo
 ### Session Management
 
 #### blocking-sessions.sql
-**Purpose:** Identify sessions that are blocking other sessions.
+**Purpose:** Find sessions that are blocking other sessions.
 
 **Output:**
 - Blocking session ID
 - Blocked session ID
-- User and host information
+- User and host info
 - Current SQL statement
-- Lock wait time
+- How long it's been waiting
 
-**Use Case:** Troubleshoot application slowdowns caused by blocking sessions.
+**Use Case:** When your app slows down, use this to see if sessions are blocking each other.
 
 **Example:**
 ```bash
@@ -68,15 +68,15 @@ mysql -h hostname -u username -p < diag/sql/blocking-sessions.sql
 ---
 
 #### gen-kill-queries-command.sql
-**Purpose:** Generate RDS-compatible kill commands for blocking queries.
+**Purpose:** Generate kill commands that work on AWS RDS.
 
 **Output:**
 - `CALL mysql.rds_kill_query(process_id)` statements
-- Metadata about the processes to be killed
+- Info about the processes
 
-**Use Case:** Create kill commands for AWS RDS MySQL instances (standard KILL not available).
+**Use Case:** On AWS RDS, you can't use regular KILL commands. This generates the RDS-specific commands instead.
 
-**Important:** This script generates commands but does NOT execute them. Review output before running.
+**Important:** This just generates the commands - it doesn't run them. Review the output first!
 
 **Example:**
 ```bash
@@ -88,15 +88,15 @@ mysql -h hostname -u username -p < diag/sql/gen-kill-queries-command.sql
 ---
 
 #### gen-kill-sessions-command.sql
-**Purpose:** Generate RDS-compatible kill commands for entire sessions.
+**Purpose:** Generate kill commands for entire sessions on AWS RDS.
 
 **Output:**
 - `CALL mysql.rds_kill(process_id)` statements
-- Session details for review
+- Session details
 
-**Use Case:** Terminate hung sessions on AWS RDS MySQL instances.
+**Use Case:** When you need to kill hung sessions on AWS RDS.
 
-**Important:** This terminates the entire connection, not just the current query.
+**Important:** This kills the entire connection, not just the current query.
 
 **Example:**
 ```bash
@@ -110,15 +110,15 @@ mysql -h hostname -u username -p < diag/sql/gen-kill-sessions-command.sql
 ### Index Analysis
 
 #### idx-btree-whr-not-unque-redundancy.sql
-**Purpose:** Identify redundant single-column B-Tree indexes that are prefixes of composite indexes.
+**Purpose:** Find redundant indexes that are wasting space.
 
 **Output:**
 - Database and table name
 - Redundant index name
-- Column covered by the index
-- Composite index that already covers this column
+- Column it indexes
+- The composite index that already covers it
 
-**Use Case:** Index optimization - remove redundant indexes to improve write performance and reduce storage.
+**Use Case:** Clean up redundant indexes to speed up writes and save disk space.
 
 **Example:**
 ```sql

@@ -4,9 +4,9 @@
 
 ## Overview
 
-A comprehensive Oracle diagnostic toolkit with **20+ specialized SQL scripts** and **AWS RDS integration utilities** for performance monitoring, troubleshooting, and capacity planning.
+A Oracle diagnostic toolkit with **20+ specialized SQL scripts** and **AWS RDS integration utilities** for performance monitoring, troubleshooting, and capacity planning.
 
-This collection provides Oracle DBAs and engineers with production-ready tools for:
+This collection provides Oracle DBAs and engineers with practical tools for:
 - Expensive SQL identification and analysis
 - Session and wait event monitoring
 - Tablespace capacity planning and monitoring

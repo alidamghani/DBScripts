@@ -4,9 +4,9 @@
 
 ## Overview
 
-A comprehensive PostgreSQL diagnostic toolkit with **24 specialized SQL scripts**, **historical statistics tracking**, and **AWS RDS integration utilities** for performance monitoring, troubleshooting, and capacity planning.
+A PostgreSQL diagnostic toolkit with **24 specialized SQL scripts**, **historical statistics tracking**, and **AWS RDS integration utilities** for performance monitoring, troubleshooting, and capacity planning.
 
-This collection provides PostgreSQL DBAs and engineers with production-ready tools for:
+This collection provides PostgreSQL DBAs and engineers with practical tools for:
 - Bloat detection and vacuum monitoring
 - Replication monitoring and troubleshooting
 - Buffer cache analysis and optimization
@@ -21,7 +21,7 @@ This collection provides PostgreSQL DBAs and engineers with production-ready too
 - 🛠️ **Shell Scripts & CLI Utilities** - AWS RDS integration and automation tools
 - ☁️ **AWS RDS Optimized** - Native support for RDS PostgreSQL and Aurora PostgreSQL
 - 💾 **Buffer Cache Analysis** - Specialized scripts for shared buffers optimization
-- 🔁 **Replication Monitoring** - Comprehensive replication health and lag tracking
+- 🔁 **Replication Monitoring** - replication health and lag tracking
 
 ---
 
@@ -598,7 +598,7 @@ psql -h hostname -U username -d database -f diag/sql/stat-archiver.sql
 ---
 
 #### pg_diag.sql
-**Purpose:** Comprehensive diagnostic query gathering multiple metrics.
+**Purpose:** diagnostic query gathering multiple metrics.
 
 **Output:**
 - Various diagnostic information in one query
@@ -617,7 +617,7 @@ psql -h hostname -U username -d database -f diag/sql/pg_diag.sql
 
 **Location:** `diag/stats_snapshot/`
 
-A comprehensive historical tracking system for PostgreSQL statistics, enabling trend analysis and performance tracking over time.
+A historical tracking system for PostgreSQL statistics, enabling trend analysis and performance tracking over time.
 
 ### Overview
 
@@ -751,7 +751,7 @@ psql -h hostname -U username -d database -f diag/stats_snapshot/reset.sql
 ---
 
 #### postgresql-diagnostics.sh
-**Purpose:** Comprehensive diagnostic data collection script.
+**Purpose:** diagnostic data collection script.
 
 **Syntax:**
 ```bash
@@ -1087,7 +1087,7 @@ done
 # Run diagnostic script on RDS
 ./diag/shell/psql.cli my-db-instance postgres us-east-1 -f diag/sql/list-tables-bloated.sql
 
-# Collect comprehensive diagnostics
+# Collect diagnostics
 ./diag/shell/postgresql-diagnostics.sh mydb.abc123.us-east-1.rds.amazonaws.com 5432 postgres postgres
 
 # Export replication data to CSV

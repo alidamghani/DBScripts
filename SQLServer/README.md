@@ -4,9 +4,9 @@
 
 ## Overview
 
-A comprehensive SQL Server diagnostic toolkit combining **14 custom performance and monitoring scripts** with the industry-standard **Brent Ozar First Responder Kit** (13 procedures).
+A SQL Server diagnostic toolkit combining **14 custom performance and monitoring scripts** with the well-known **Brent Ozar First Responder Kit** (13 procedures).
 
-This collection provides SQL Server DBAs and engineers with production-ready tools for:
+This collection provides SQL Server DBAs and engineers with practical tools for:
 - Performance troubleshooting and optimization
 - Index analysis and recommendations
 - Query performance identification
@@ -17,7 +17,7 @@ This collection provides SQL Server DBAs and engineers with production-ready too
 
 **Contents:**
 - 🔧 **14 Custom Diagnostic Scripts** - Purpose-built queries for common troubleshooting scenarios
-- 🎯 **Brent Ozar First Responder Kit** - Industry-standard diagnostic procedures (13 stored procedures)
+- 🎯 **Brent Ozar First Responder Kit** - Well-known diagnostic procedures (13 stored procedures)
 - 📊 **Query Store Analysis** - Query performance tracking and optimization
 - 💾 **Backup & Recovery** - Backup history and validation scripts
 - 📈 **Performance Monitoring** - Wait statistics, I/O analysis, resource consumption
@@ -123,7 +123,7 @@ GO
 
 ### Quick Usage Examples
 
-#### sp_Blitz - Comprehensive Health Check
+#### sp_Blitz - Health Check
 
 ```sql
 -- Basic health check
@@ -344,7 +344,7 @@ In addition to the Blitz toolkit, this collection includes **14 custom diagnosti
 | **unused_index.sql** | Unused index identification | User seeks/scans/lookups, updates | Index cleanup |
 | **average_fragmentation.sql** | Index fragmentation analysis | Fragmentation %, page count, index type | Maintenance planning |
 | **QueryStore.sql** | Query Store analysis | Query performance, plan changes | Query performance tracking |
-| **sql_diag.sql** | Comprehensive diagnostics | Server config, DB status, performance counters | General troubleshooting |
+| **sql_diag.sql** | diagnostics | Server config, DB status, performance counters | General troubleshooting |
 | **virtual_disk_io.sql** | Virtual disk I/O statistics | Reads/writes, latency, pending I/O | Storage performance |
 | **wait_resources.sql** | Wait resource analysis | Wait types, waiting tasks, resources | Bottleneck identification |
 | **transaction_log_operations.sql** | Transaction log monitoring | Log space used, VLF count, log backups | Log management |
@@ -467,7 +467,7 @@ ALTER DATABASE MyDatabase SET QUERY_STORE = ON;
 ---
 
 #### sql_diag.sql
-**Purpose:** Comprehensive diagnostic information gathering.
+**Purpose:** diagnostic information gathering.
 
 **Output:**
 - Server configuration
@@ -703,7 +703,7 @@ EXEC sp_BlitzIndex @DatabaseName = 'MyDatabase', @Mode = 1;
 
 **Scenario:** "I just inherited this SQL Server. What shape is it in?"
 
-1. **Run comprehensive health check:**
+1. **Run health check:**
 ```sql
 EXEC sp_Blitz;
 ```

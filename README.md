@@ -1,5 +1,5 @@
 # DBScripts
-### Enterprise Database Diagnostic & Performance Toolkit
+### Database Diagnostic & Performance Scripts
 
 <p align="center">
   <a href="https://www.mysql.com/"><img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" width="80" alt="MySQL"></a>
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>A comprehensive collection of production-ready diagnostic and performance tuning scripts for MySQL, Oracle, PostgreSQL, and SQL Server database systems.</strong>
+  <strong>A collection of practical diagnostic and performance tuning scripts for MySQL, Oracle, PostgreSQL, and SQL Server databases.</strong>
 </p>
 
 <p align="center">
@@ -47,31 +47,30 @@
 
 ## Overview
 
-**DBScripts** is a comprehensive toolkit designed for database administrators, DevOps engineers, Site Reliability Engineers, and AWS RDS users who need production-ready diagnostic and performance tuning capabilities across multiple database platforms.
+**DBScripts** is a collection of useful diagnostic scripts for working with MySQL, Oracle, PostgreSQL, and SQL Server databases. Whether you're a DBA, developer, or just managing your own databases, these scripts can help you troubleshoot issues, optimize performance, and understand what's happening inside your database.
 
 **What's Included:**
-- **98 SQL diagnostic scripts** covering performance analysis, troubleshooting, and monitoring
-- **11 shell/CLI automation scripts** for AWS RDS integration and batch operations
-- **4 major database platforms** supported: MySQL, Oracle, PostgreSQL, SQL Server
-- **Industry-standard toolkits** including Brent Ozar's First Responder Kit for SQL Server
-- **AWS RDS optimized** scripts with native RDS procedure support
+- **98 SQL diagnostic scripts** for performance analysis, troubleshooting, and monitoring
+- **11 shell/CLI scripts** for AWS RDS integration and automation
+- **4 database platforms**: MySQL, Oracle, PostgreSQL, SQL Server
+- **Bonus tools** like Brent Ozar's First Responder Kit for SQL Server
+- **AWS RDS support** with scripts optimized for cloud databases
 
-**Primary Use Cases:**
-- Performance troubleshooting and optimization
-- Blocking session and deadlock analysis
-- Index analysis and recommendations
-- Space allocation and capacity planning
-- Query performance identification
-- Replication monitoring
-- Historical statistics tracking
-- Health checks and diagnostics
+**Common Uses:**
+- Find and fix slow queries
+- Identify blocking sessions and deadlocks
+- Analyze and optimize indexes
+- Monitor disk space and plan capacity
+- Track replication lag
+- Collect historical statistics
+- Run quick health checks
 
-**Target Audience:**
-- Database Administrators (DBAs)
-- DevOps Engineers
-- Site Reliability Engineers (SREs)
-- AWS RDS Users
-- Performance Engineers
+**Who might find this useful:**
+- DBAs managing databases
+- Developers troubleshooting performance
+- DevOps engineers monitoring systems
+- Anyone running databases on AWS RDS
+- Students learning database internals
 
 ---
 
@@ -81,23 +80,23 @@
 
 [<img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" align="right" width="100" alt="MySQL">](https://www.mysql.com/)
 
-Comprehensive MySQL diagnostic toolkit with **11 specialized SQL scripts** and **AWS RDS integration utilities**.
+A collection of **11 handy SQL scripts** and **AWS RDS tools** to help you troubleshoot and optimize MySQL databases.
 
 **Key Features:**
-- Blocking session detection and analysis
-- Index redundancy identification (B-Tree optimization)
-- Primary key validation and missing PK detection
-- Space allocation monitoring (InnoDB tablespace analysis)
-- Auto-increment column tracking
-- RDS-specific kill commands generation (rds_kill, rds_kill_query)
-- AWS CLI integration for RDS instance discovery
+- Find sessions blocking each other
+- Spot redundant indexes wasting space
+- Check which tables are missing primary keys
+- Monitor disk space usage
+- Track auto-increment columns before they max out
+- Generate kill commands for AWS RDS (since KILL doesn't work there)
+- Quickly connect to RDS instances
 
 **Script Categories:**
-- **Session Analysis:** Identify blocking sessions and generate kill commands
-- **Index Optimization:** Detect redundant indexes and improve query performance
-- **Schema Validation:** Find tables missing primary keys or with schema issues
-- **Capacity Planning:** Monitor space allocation across databases and tablespaces
-- **RDS Integration:** List MySQL RDS instances and automate connections
+- **Session Analysis:** See what's blocking what, generate kill commands
+- **Index Optimization:** Find redundant indexes you can drop
+- **Schema Validation:** Spot tables without primary keys
+- **Capacity Planning:** Check how much space you're using
+- **RDS Integration:** Work with AWS RDS MySQL instances
 
 **Quick Example:**
 ```bash
@@ -117,25 +116,25 @@ mysql -h hostname -u username -p < Mysql/diag/sql/blocking-sessions.sql
 
 [<img src="https://www.oracle.com/a/ocom/img/sql.svg" align="right" width="100" alt="Oracle">](https://www.oracle.com/database/)
 
-Professional-grade Oracle diagnostic toolkit with **20+ SQL scripts** and **advanced automation utilities**.
+A collection of **20+ SQL scripts** to help you troubleshoot and tune Oracle databases.
 
 **Key Features:**
-- Expensive SQL identification and analysis (buffer gets/execution)
-- Session and wait event analysis (blocking, waiting, temp space usage)
-- Tablespace monitoring (permanent and temporary space)
-- SQL execution plan analysis (explain plans for sql_id)
-- Patch inventory for Oracle 12c (detailed and summary views)
-- Redo log sizing recommendations
-- Long operations tracking (v$session_longops)
-- Constraint and index analysis per table
+- Find your most expensive queries
+- See what sessions are doing and what they're waiting for
+- Monitor tablespace usage
+- Understand query execution plans
+- Check installed patches (Oracle 12c)
+- Get recommendations for redo log sizing
+- Track long-running operations
+- Review table constraints and indexes
 
 **Script Categories:**
-- **Performance Analysis:** Identify expensive SQL, explain plans, session waits
-- **Session Management:** Analyze sessions by username, sql_id, wait events, SID
-- **Space Management:** Monitor permanent and temporary tablespace utilization
-- **Schema Analysis:** Review constraints, indexes, and table structures
-- **System Health:** Check patches, recommend redo log configurations
-- **RDS Integration:** AWS CLI utilities for RDS Oracle instance management
+- **Performance Analysis:** Find expensive queries, see execution plans, analyze waits
+- **Session Management:** Check what users are doing and why they're waiting
+- **Space Management:** Monitor tablespace usage
+- **Schema Analysis:** Look at constraints, indexes, and table structure
+- **System Health:** Check patches, tune redo logs
+- **RDS Integration:** Tools for AWS RDS Oracle
 
 **Quick Example:**
 ```bash
@@ -161,26 +160,26 @@ sqlplus username/password@tnsname @Oracle/diag/sql/expensive-sql.sql
 
 [<img src="Postgres/img/pg_logo.svg" align="right" width="100" alt="PostgreSQL">](https://www.postgresql.org/)
 
-Advanced PostgreSQL diagnostic toolkit with **30+ SQL scripts**, **buffer cache analysis**, and **historical statistics tracking**.
+A collection of **30+ SQL scripts** with special focus on bloat detection, replication monitoring, and historical statistics tracking.
 
 **Key Features:**
-- Bloat detection for tables and B-tree indexes
-- Dead tuple analysis and vacuum monitoring
-- Buffer cache utilization and hit ratio analysis
-- Replication monitoring (slots, conflicts, WAL receiver, xmin)
-- Session and lock dependency analysis
-- Unused and duplicated index identification
-- **Stats Snapshot System** - Historical tracking of pg_stat tables
-- Database size and age monitoring
+- Detect table and index bloat (wasted space)
+- Check for dead tuples and vacuum issues
+- Analyze buffer cache hit ratios
+- Monitor replication lag and conflicts
+- Find sessions blocking each other
+- Spot unused or duplicate indexes
+- **Stats Snapshot System** - Track performance trends over time
+- Monitor database size and transaction age
 
 **Script Categories:**
-- **Bloat Analysis:** Identify bloated tables and indexes requiring maintenance
-- **Vacuum Monitoring:** Track dead tuples, table age, vacuum freeze hold-backs
-- **Buffer Cache:** Analyze cache utilization, histogram, and hit ratios
-- **Replication:** Monitor replication slots, conflicts, and lag
-- **Performance:** Find sessions blocking others, low buffer hit queries
-- **Index Optimization:** Detect unused, duplicated, and low HOT update indexes
-- **Historical Tracking:** Stats snapshot system for trend analysis
+- **Bloat Analysis:** Find bloated tables and indexes that need cleanup
+- **Vacuum Monitoring:** Track dead tuples and vacuum progress
+- **Buffer Cache:** See what's in memory and cache hit rates
+- **Replication:** Monitor replication lag and conflicts
+- **Performance:** Find blocking sessions and slow queries
+- **Index Optimization:** Spot unused or duplicate indexes you can drop
+- **Historical Tracking:** Stats snapshot system to track trends over time
 
 **Featured Subsystems:**
 - **Buffer Cache Analysis** (`Postgres/diag/sql/buffer_cache/`)
@@ -222,19 +221,19 @@ psql -h hostname -U username -d database -f Postgres/diag/stats_snapshot/setup.s
 
 [<img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" align="right" width="100" alt="SQL Server">](https://www.microsoft.com/sql-server/)
 
-Enterprise SQL Server diagnostic toolkit combining **14 custom performance scripts** with the industry-standard **Brent Ozar First Responder Kit** (13 procedures).
+A collection of **14 custom diagnostic scripts** plus the complete **Brent Ozar First Responder Kit** (13 procedures) for SQL Server troubleshooting.
 
 **Key Features:**
 
 #### Brent Ozar First Responder Kit (Included)
-Scripts **directly from Brent Ozar Unlimited** - the industry's most trusted SQL Server diagnostic toolkit:
-- **sp_Blitz** - Comprehensive SQL Server health check
-- **sp_BlitzFirst** - Real-time performance analysis ("Why is my server slow right now?")
-- **sp_BlitzCache** - Query performance analysis (most resource-intensive queries)
-- **sp_BlitzIndex** - Index tuning recommendations
-- **sp_BlitzLock** - Deadlock analysis and investigation
-- **sp_BlitzBackups** - Backup validation and history
-- **sp_BlitzWho** - Current activity and session analysis
+Scripts **directly from Brent Ozar Unlimited** - trusted by SQL Server DBAs worldwide:
+- **sp_Blitz** - Overall health check of your SQL Server
+- **sp_BlitzFirst** - Real-time performance analysis ("Why is it slow right now?")
+- **sp_BlitzCache** - Find your most expensive queries
+- **sp_BlitzIndex** - Get index tuning recommendations
+- **sp_BlitzLock** - Understand deadlocks and blocking
+- **sp_BlitzBackups** - Check your backup history
+- **sp_BlitzWho** - See what's running right now
 - And more...
 
 **Installation:** Run `SQLServer/Blitz/Install-All-Scripts.sql`  
@@ -242,7 +241,7 @@ Scripts **directly from Brent Ozar Unlimited** - the industry's most trusted SQL
 **Training:** https://www.brentozar.com/product/how-i-use-the-first-responder-kit/
 
 #### Custom Diagnostic Scripts
-14 specialized scripts for common SQL Server troubleshooting scenarios:
+14 handy scripts for common SQL Server troubleshooting:
 
 | Script | Purpose |
 |--------|---------|
