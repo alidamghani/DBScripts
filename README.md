@@ -110,7 +110,6 @@ mysql -h hostname -u username -p < Mysql/diag/sql/blocking-sessions.sql
 
 **Documentation:** [Mysql/mysql.README](Mysql/mysql.README)
 
-**Tested On:** MySQL 5.6, 5.7, MariaDB 10.0, Aurora 5.6
 
 ---
 
@@ -155,7 +154,6 @@ sqlplus username/password@tnsname @Oracle/diag/sql/expensive-sql.sql
 
 **Documentation:** [Oracle/oracle.README](Oracle/oracle.README)
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -217,7 +215,6 @@ psql -h hostname -U username -d database -f Postgres/diag/stats_snapshot/setup.s
 
 **Documentation:** [Postgres/README.md](Postgres/README.md) (Comprehensive guide with additional resources)
 
-**Tested On:** PostgreSQL 9.6+, AWS RDS PostgreSQL, Aurora PostgreSQL
 
 ---
 
@@ -280,7 +277,6 @@ sqlcmd -S hostname -U username -i SQLServer/missing_index.sql
 
 **Documentation:** [SQLServer/README.md](SQLServer/README.md) (Comprehensive guide)
 
-**Tested On:** SQL Server 2012+, Azure SQL Database, AWS RDS SQL Server
 
 ---
 
