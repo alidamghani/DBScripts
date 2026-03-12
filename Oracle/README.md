@@ -74,7 +74,6 @@ sqlplus username/password@tnsname @diag/sql/expensive-sql.sql
 - Elapsed time
 - CPU time
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -97,7 +96,6 @@ sqlplus username/password@tnsname @diag/sql/explain-sql-whr-sql_id.sql
 # Enter SQL_ID when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -117,7 +115,6 @@ sqlplus username/password@tnsname @diag/sql/sql-text-whr-sql_id.sql
 # Enter SQL_ID when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -139,7 +136,6 @@ sqlplus username/password@tnsname @diag/sql/sql-text-whr-sql_id.sql
 sqlplus username/password@tnsname @diag/sql/blocking-sessions.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -166,7 +162,6 @@ sqlplus username/password@tnsname @diag/sql/session-whr-sid.sql
 # Enter SID when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -191,7 +186,6 @@ sqlplus username/password@tnsname @diag/sql/sessions-whr-username.sql
 # Enter username when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -215,7 +209,6 @@ sqlplus username/password@tnsname @diag/sql/sessions-whr-sql_id.sql
 # Enter SQL_ID when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -239,7 +232,6 @@ sqlplus username/password@tnsname @diag/sql/sessions-whr-wait_event.sql
 # Enter wait event name (e.g., 'db file sequential read')
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -258,7 +250,6 @@ sqlplus username/password@tnsname @diag/sql/sessions-whr-wait_event.sql
 sqlplus username/password@tnsname @diag/sql/session-wait-summary.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -277,7 +268,6 @@ sqlplus username/password@tnsname @diag/sql/session-wait-summary.sql
 sqlplus username/password@tnsname @diag/sql/session-sql-waits.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -298,7 +288,6 @@ sqlplus username/password@tnsname @diag/sql/session-sql-waits.sql
 sqlplus username/password@tnsname @diag/sql/sessions-using-temp-space.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -322,7 +311,6 @@ sqlplus username/password@tnsname @diag/sql/longops-whr-sid.sql
 # Enter SID when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -346,7 +334,6 @@ sqlplus username/password@tnsname @diag/sql/gen-kill-command-whr-sid.sql
 # Review output, then execute command manually if appropriate
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -369,7 +356,6 @@ sqlplus username/password@tnsname @diag/sql/gen-kill-command-whr-sid.sql
 sqlplus username/password@tnsname @diag/sql/perm-tablespace-space.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 **Recommendation:** Alert when free space drops below 20%.
 
@@ -392,7 +378,6 @@ sqlplus username/password@tnsname @diag/sql/perm-tablespace-space.sql
 sqlplus username/password@tnsname @diag/sql/temp-tablespace-space.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -417,7 +402,6 @@ sqlplus username/password@tnsname @diag/sql/constraints-whr-table.sql
 # Enter table name when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -439,7 +423,6 @@ sqlplus username/password@tnsname @diag/sql/indexes-whr-table.sql
 # Enter table name when prompted
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -463,7 +446,6 @@ sqlplus username/password@tnsname @diag/sql/oracle-12-patch-list.sql
 
 **Supported Versions:** Oracle 12c (EE, SE, SE2)
 
-**Tested On:** Oracle SE 12.1, Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -488,7 +470,6 @@ sqlplus username/password@tnsname @diag/sql/oracle-12-patch-list-verbose.sql
 
 **Supported Versions:** Oracle 12c (EE, SE, SE2)
 
-**Tested On:** Oracle SE 12.1, Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -510,7 +491,6 @@ sqlplus username/password@tnsname @diag/sql/oracle-12-patch-list-verbose.sql
 sqlplus username/password@tnsname @diag/sql/recommend-redolog-size-count.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 **Best Practice:** Redo logs should switch approximately every 15-20 minutes under peak load.
 
@@ -529,7 +509,6 @@ sqlplus username/password@tnsname @diag/sql/recommend-redolog-size-count.sql
 sqlplus username/password@tnsname @diag/sql/hello-world.sql
 ```
 
-**Tested On:** Oracle SE2 12.1, Oracle EE 12.1
 
 ---
 
@@ -561,7 +540,6 @@ sqlplus username/password@tnsname @diag/sql/hello-world.sql
 - AWS CLI 1.10.30+
 - IAM permissions: `rds:DescribeDBInstances`
 
-**Tested On:** aws-cli/1.10.30+
 
 ---
 
@@ -592,7 +570,6 @@ sqlplus username/password@tnsname @diag/sql/hello-world.sql
 - AWS CLI 1.10.30+
 - Oracle SQL*Plus client installed
 
-**Tested On:** aws-cli/1.10.30+
 
 ---
 
@@ -622,7 +599,6 @@ sqlplus username/password@tnsname @diag/sql/hello-world.sql
 - AWS CLI 1.10.30+
 - IAM permissions: `rds:DescribeDBLogFiles`, `rds:DownloadDBLogFilePortion`
 
-**Tested On:** aws-cli/1.10.30+
 
 ---
 
@@ -657,7 +633,6 @@ sqlplus username/password@tnsname @diag/sql/hello-world.sql
 - SQL*Plus installed
 - Same DBA username and password on all instances
 
-**Tested On:** EC2 Amazon Linux, Bash shell, aws-cli/1.10.30
 
 ---
 
@@ -695,7 +670,6 @@ EOF
 
 **See:** `tns-connect-list.sample` for examples
 
-**Tested On:** EC2 Amazon Linux, Bash shell
 
 ---
 

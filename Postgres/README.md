@@ -71,7 +71,6 @@ psql -h hostname -U username -d database -f diag/sql/list-tables-bloated.sql
 - Bloat 20-40%: Consider vacuum
 - Bloat > 40%: Action required
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -93,7 +92,6 @@ psql -h hostname -U username -d database -f diag/sql/list-btree-bloat.sql
 
 **Recommendation:** REINDEX bloated indexes during maintenance windows.
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -116,7 +114,6 @@ psql -h hostname -U username -d database -f diag/sql/list-tables-with-dead-tuple
 
 **Warning:** High dead tuple percentage indicates autovacuum not keeping up or insufficient vacuum configuration.
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -139,7 +136,6 @@ psql -h hostname -U username -d database -f diag/sql/list-tables-age.sql
 
 **Critical:** Age approaching 2 billion requires immediate attention to prevent wraparound shutdown.
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -158,7 +154,6 @@ psql -h hostname -U username -d database -f diag/sql/list-tables-age.sql
 psql -h hostname -U username -d database -f diag/sql/list-vacuum-freeze-hold-back-potential-reasons.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -180,7 +175,6 @@ psql -h hostname -U username -d database -f diag/sql/top30-tables-with-low-hotup
 
 **Recommendation:** Low HOT update ratio (< 80%) may indicate need to adjust fillfactor or remove unnecessary indexes.
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -206,7 +200,6 @@ psql -h hostname -U username -d database -f diag/sql/top30-tables-with-low-hotup
 psql -h hostname -U username -d database -f diag/sql/list-sessions.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -230,7 +223,6 @@ psql -h hostname -U username -d database -f diag/sql/list-sessions-blocking-othe
 
 **Action:** Review blocking queries, consider terminating if appropriate.
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -251,7 +243,6 @@ psql -h hostname -U username -d database -f diag/sql/list-sessions-blocking-othe
 psql -h hostname -U username -d database -f diag/sql/list-lock-dependency-info.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -275,7 +266,6 @@ psql -h hostname -U username -d database -f diag/sql/list-unused-indexes.sql
 
 **Caution:** Verify indexes are truly unused before dropping (check application schedules, batch jobs).
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -295,7 +285,6 @@ psql -h hostname -U username -d database -f diag/sql/list-unused-indexes.sql
 psql -h hostname -U username -d database -f diag/sql/list-duplicated-indexes.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -320,7 +309,6 @@ psql -h hostname -U username -d database -f diag/sql/repl-slots.sql
 
 **Warning:** Inactive replication slots can cause WAL accumulation and disk space issues.
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -342,7 +330,6 @@ psql -h hostname -U username -d database -f diag/sql/repl-slots.sql
 psql -h hostname -U username -d database -f diag/sql/repl-session.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -364,7 +351,6 @@ psql -h hostname -U username -d database -f diag/sql/repl-session.sql
 psql -h replica-hostname -U username -d database -f diag/sql/repl-wal-receiver.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -384,7 +370,6 @@ psql -h replica-hostname -U username -d database -f diag/sql/repl-wal-receiver.s
 psql -h replica-hostname -U username -d database -f diag/sql/repl-database-conflicts.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -405,7 +390,6 @@ psql -h replica-hostname -U username -d database -f diag/sql/repl-database-confl
 psql -h hostname -U username -d database -f diag/sql/repl-xmin-from-activity.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -469,7 +453,6 @@ psql -h hostname -U username -d database -f diag/sql/buffer_cache/buffer-cache-s
 
 **See:** [Buffer Cache README](diag/sql/buffer_cache/README.md) for detailed documentation
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -493,7 +476,6 @@ psql -h hostname -U username -d database -f diag/sql/buffer_cache/buffer-cache-s
 psql -h hostname -U username -d database -f diag/sql/list-roles.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -512,7 +494,6 @@ psql -h hostname -U username -d database -f diag/sql/list-roles.sql
 psql -h hostname -U username -d database -f diag/sql/list-databases-size.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -532,7 +513,6 @@ psql -h hostname -U username -d database -f diag/sql/list-databases-size.sql
 psql -h hostname -U username -d database -f diag/sql/list-functions.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -553,7 +533,6 @@ psql -h hostname -U username -d database -f diag/sql/list-functions.sql
 psql -h hostname -U username -d database -f diag/sql/list-all-settings.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -574,7 +553,6 @@ psql -h hostname -U username -d database -f diag/sql/grants-whr-table.sql
 # Script will prompt for table name
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -596,7 +574,6 @@ psql -h hostname -U username -d database -f diag/sql/grants-whr-table.sql
 psql -h hostname -U username -d database -f diag/sql/list-top10-lowest-buffer-hit-ratio-per-query.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -617,7 +594,6 @@ psql -h hostname -U username -d database -f diag/sql/list-top10-lowest-buffer-hi
 psql -h hostname -U username -d database -f diag/sql/stat-archiver.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 
@@ -634,7 +610,6 @@ psql -h hostname -U username -d database -f diag/sql/stat-archiver.sql
 psql -h hostname -U username -d database -f diag/sql/pg_diag.sql
 ```
 
-**Tested On:** PostgreSQL 9.6+
 
 ---
 

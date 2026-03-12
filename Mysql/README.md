@@ -64,7 +64,6 @@ This collection provides MySQL DBAs and engineers with production-ready tools fo
 mysql -h hostname -u username -p < diag/sql/blocking-sessions.sql
 ```
 
-**Tested On:** MySQL 5.6+
 
 ---
 
@@ -85,7 +84,6 @@ mysql -h hostname -u username -p < diag/sql/gen-kill-queries-command.sql
 # Review output, then execute desired commands manually
 ```
 
-**Tested On:** MySQL 5.6+, AWS RDS MySQL, Aurora MySQL
 
 ---
 
@@ -106,7 +104,6 @@ mysql -h hostname -u username -p < diag/sql/gen-kill-sessions-command.sql
 # Review output, then execute desired commands manually
 ```
 
-**Tested On:** MySQL 5.6+, AWS RDS MySQL, Aurora MySQL
 
 ---
 
@@ -133,7 +130,6 @@ mysql -h hostname -u username -p < diag/sql/gen-kill-sessions-command.sql
 mysql -h hostname -u username -p < diag/sql/idx-btree-whr-not-unque-redundancy.sql
 ```
 
-**Tested On:** MySQL 5.6+
 
 **Recommendation:** Review output carefully. Some "redundant" indexes may be kept for specific query patterns.
 
@@ -156,7 +152,6 @@ mysql -h hostname -u username -p < diag/sql/idx-btree-whr-not-unque-redundancy.s
 mysql -h hostname -u username -p < diag/sql/table-whr-pk.sql
 ```
 
-**Tested On:** MySQL 5.6+
 
 ---
 
@@ -176,7 +171,6 @@ mysql -h hostname -u username -p < diag/sql/table-whr-pk.sql
 mysql -h hostname -u username -p < diag/sql/table-whr-pk-columns.sql
 ```
 
-**Tested On:** MySQL 5.6+
 
 ---
 
@@ -196,7 +190,6 @@ mysql -h hostname -u username -p < diag/sql/table-whr-pk-columns.sql
 mysql -h hostname -u username -p < diag/sql/table-whr-pk-missing.sql
 ```
 
-**Tested On:** MySQL 5.6+
 
 **Best Practice:** All InnoDB tables should have a primary key. Tables without one use a hidden 6-byte row ID, which can impact performance.
 
@@ -219,7 +212,6 @@ mysql -h hostname -u username -p < diag/sql/table-whr-pk-missing.sql
 mysql -h hostname -u username -p < diag/sql/tables-whr-autoincrement.sql
 ```
 
-**Tested On:** MySQL 5.7+
 
 **Warning:** Auto-increment values approaching maximum can cause INSERT failures.
 
@@ -240,7 +232,6 @@ mysql -h hostname -u username -p < diag/sql/tables-whr-autoincrement.sql
 mysql -h hostname -u username -p < diag/sql/tables-whr-no-autoincrement.sql
 ```
 
-**Tested On:** MySQL 5.7+
 
 ---
 
@@ -263,7 +254,6 @@ mysql -h hostname -u username -p < diag/sql/tables-whr-no-autoincrement.sql
 mysql -h hostname -u username -p < diag/sql/space-allocation.sql
 ```
 
-**Tested On:** MySQL 5.6+
 
 **Note:** Does not include binary logs or other log files.
 
@@ -285,7 +275,6 @@ mysql -h hostname -u username -p < diag/sql/space-allocation.sql
 mysql -h hostname -u username -p < diag/sql/innodb-table-whr-tablespace.sql
 ```
 
-**Tested On:** MySQL 5.6+
 
 **Best Practice:** File-per-table mode (`innodb_file_per_table=ON`) is recommended for most workloads.
 
@@ -319,7 +308,6 @@ mysql -h hostname -u username -p < diag/sql/innodb-table-whr-tablespace.sql
 - AWS CLI 1.10.30+
 - IAM permissions: `rds:DescribeDBInstances`
 
-**Tested On:** aws-cli/1.10.30+
 
 ---
 
@@ -351,7 +339,6 @@ mysql -h hostname -u username -p < diag/sql/innodb-table-whr-tablespace.sql
 - `mysql` client installed
 - Password configured in `~/.my.cnf` (see [Configuration](#configuration))
 
-**Tested On:** aws-cli/1.10.30, mysql 5.7, MariaDB 10.0, Aurora 5.6
 
 ---
 
@@ -383,7 +370,6 @@ java RDSDatabaseConnection mydb.abc123.us-east-1.rds.amazonaws.com 3306 admin my
 - Java 1.8+
 - MySQL JDBC driver (Connector/J)
 
-**Tested On:** Java 1.8, MySQL 5.6+
 
 ---
 
